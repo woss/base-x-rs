@@ -12,7 +12,7 @@ Add this to `Cargo.toml` file:
 
 ```toml
 [dependencies]
-base-x = "0.2.0"
+base-x = "0.3.0"
 ```
 
 ## Usage
@@ -28,6 +28,43 @@ fn main() {
 ```
 
 ## Changelog
+
+- 0.3.0 (2026-08-21)
+
+  - Added validation for alphabets: they must contain at least two unique
+    characters, and byte-slice alphabets must be ASCII.
+  - Updated the crate to Rust 2024 and refreshed development dependencies.
+  - Replaced the `json` development dependency with `serde_json`.
+
+- 0.2.11 (2022-06-24)
+
+  Reduced the scope of unsafe code when converting internal integers to bytes.
+
+- 0.2.10 (2022-04-23)
+
+  Updated development dependencies and fixed compiler warnings.
+
+- 0.2.8 (2020-11-08)
+
+  Fixed the `std` feature configuration used by `no_std` builds.
+
+- 0.2.7 (2020-11-03)
+
+  Added `no_std` support; the `std` feature remains enabled by default.
+
+- 0.2.5 (2019-05-30)
+
+  Refactored encoding and decoding, fixed Clippy warnings, and added proper
+  ASCII validation for byte-slice alphabets.
+
+- 0.2.4 (2019-01-01)
+
+  Updated package metadata.
+
+- 0.2.3 (2018-08-24)
+
+  Released the optimized internal big-integer implementation and UTF-8
+  alphabet support.
 
 - 0.2.0
 
