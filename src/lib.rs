@@ -111,4 +111,57 @@ mod test {
         );
         assert_eq!(decoded, &[0xff, 0x00, 0xff, 0x00]);
     }
+
+    #[test]
+    #[should_panic(expected = "at least 2")]
+    fn encode_empty_alphabet_panics() {
+        encode("", &[1u8]);
+    }
+
+    #[test]
+    #[should_panic(expected = "at least 2")]
+    fn encode_empty_alphabet_bytes_panics() {
+        encode(b"".as_slice(), &[1u8]);
+    }
+
+    #[test]
+    #[should_panic(expected = "at least 2")]
+    fn encode_single_char_alphabet_panics() {
+        encode("x", &[1u8]);
+    }
+
+    #[test]
+    #[should_panic(expected = "at least 2")]
+    fn encode_single_char_alphabet_bytes_panics() {
+        encode(b"x".as_slice(), &[1u8]);
+    }
+
+    #[test]
+    #[should_panic(expected = "duplicate")]
+    fn encode_duplicate_alphabet_panics() {
+        encode("aab", &[3u8]);
+    }
+
+    #[test]
+    #[should_panic(expected = "duplicate")]
+    fn encode_duplicate_alphabet_bytes_panics() {
+        encode(b"aab".as_slice(), &[3u8]);
+    }
+
+    #[test]
+    fn decode_empty_alphabet_returns_error() {
+        assert!(decode("", "abc").is_err());
+    }
+
+    #[test]
+    #[should_panic(expected = "duplicate")]
+    fn decode_duplicate_alphabet_panics() {
+        let _ = decode("aab", "aa");
+    }
+
+    #[test]
+    #[should_panic(expected = "duplicate")]
+    fn decode_duplicate_alphabet_bytes_panics() {
+        let _ = decode(b"aab".as_slice(), "aa");
+    }
 }

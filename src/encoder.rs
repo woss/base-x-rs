@@ -12,6 +12,8 @@ where
 
     let base = alpha.len() as u32;
 
+    assert!(base >= 2, "Alphabet must have at least 2 characters");
+
     // Convert the input byte array to a BigUint
     let mut big = BigUint::from_bytes_be(input);
     let mut out = Vec::with_capacity(input.len());
