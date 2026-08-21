@@ -4,7 +4,7 @@ use alloc::vec::Vec;
 #[cfg(not(feature = "std"))]
 use core as std;
 
-use std::{ptr, u32};
+use std::ptr;
 
 /// This is a pretty naive implementation of a BigUint abstracting all
 /// math out to a vector of `u32` chunks.

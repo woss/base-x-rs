@@ -67,7 +67,6 @@ pub fn decode<A: Alphabet>(alphabet: A, input: &str) -> Result<Vec<u8>, DecodeEr
 mod test {
     use super::decode;
     use super::encode;
-    use json::parse;
     use std::fs::File;
     use std::io::Read;
 
@@ -77,10 +76,10 @@ mod test {
         let mut data = String::new();
         file.read_to_string(&mut data).unwrap();
 
-        let json = parse(&data).unwrap();
+        let json: serde_json::Value = serde_json::from_str(&data).unwrap();
         let alphabets = &json["alphabets"];
 
-        for value in json["valid"].members() {
+        for value in json["valid"].as_array().unwrap() {
             let alphabet_name = value["alphabet"].as_str().unwrap();
             let input = value["string"].as_str().unwrap();
             let alphabet = alphabets[alphabet_name].as_str().unwrap();
