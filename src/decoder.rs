@@ -4,8 +4,8 @@ use alloc::vec::Vec;
 #[cfg(not(feature = "std"))]
 use core as std;
 
-use bigint::BigUint;
-use DecodeError;
+use crate::bigint::BigUint;
+use crate::DecodeError;
 
 pub(crate) trait Decoder<'a, 'b>
 where

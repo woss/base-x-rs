@@ -1,9 +1,9 @@
 #[cfg(not(feature = "std"))]
 use alloc::{string::String, vec::Vec};
-use DecodeError;
+use crate::DecodeError;
 
-use decoder::*;
-use encoder;
+use crate::decoder::*;
+use crate::encoder;
 
 pub trait Alphabet {
     fn encode(self, input: &[u8]) -> String;

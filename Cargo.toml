@@ -2,6 +2,7 @@
 name = "base-x"
 description = "Encode/decode any base"
 version = "0.2.11"
+edition = "2024"
 authors = ["Alex R. <alexei.rudenko@gmail.com>"]
 license = "MIT"
 readme = "README.md"
@@ -13,7 +14,7 @@ categories = ["value-formatting"]
 [dev-dependencies]
 json = "0.12"
 bencher = "0.1"
-rand = "0.8"
+rand = "0.9.5"
 
 [[bench]]
 name = "base"

@@ -14,8 +14,6 @@
 //! ## Usage
 //!
 //! ```rust
-//! extern crate base_x;
-//!
 //! fn main() {
 //!   let decoded = base_x::decode("01", "11111111000000001111111100000000").unwrap();
 //!   let encoded = base_x::encode("01", &decoded);
@@ -53,11 +51,7 @@ impl fmt::Display for DecodeError {
 }
 
 #[cfg(feature = "std")]
-impl std::error::Error for DecodeError {
-    fn description(&self) -> &str {
-        "Can not decode the provided data"
-    }
-}
+impl std::error::Error for DecodeError {}
 
 /// Encode an input vector using the given alphabet.
 pub fn encode<A: Alphabet>(alphabet: A, input: &[u8]) -> String {
@@ -73,8 +67,7 @@ pub fn decode<A: Alphabet>(alphabet: A, input: &str) -> Result<Vec<u8>, DecodeEr
 mod test {
     use super::decode;
     use super::encode;
-    extern crate json;
-    use self::json::parse;
+    use json::parse;
     use std::fs::File;
     use std::io::Read;
 
